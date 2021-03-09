@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { 
+      "source": "/",
+      "destination": "https://robbertvancaem.medium.com/", 
+      "permanent": true
+    }
+  ]
+}
