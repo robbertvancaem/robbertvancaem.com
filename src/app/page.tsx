@@ -45,7 +45,7 @@ export default function Home() {
         </div>
       </div>
       <div className="py-4 px-16 border border-slate-800">
-        <h2 className="text-2xl font-bold">What makes me a "modern" developer?</h2>
+        <h2 className="text-2xl font-bold">What makes me a &quot;modern&quot; developer?</h2>
         <ul>
           {listConfig.map(ListItem)}
         </ul>
