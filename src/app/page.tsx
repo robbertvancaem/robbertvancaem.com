@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 
 const listConfig: {emoji: string, text: string}[] = [{
@@ -24,11 +25,11 @@ const ListItem = ({ emoji, text }: { emoji: string, text: string }) => <Li key={
 export default function Home() {
   return (
     <main>
-      <nav className="flex justify-between p-4 fixed backdrop-saturate-100 backdrop-blur bg-black/30 w-full border-b border-slate-800">
-        <a href="#">
-          <span className="font-extrabold tracking-widest">RVC</span>
-          <span className="font-light">.dev</span>
-        </a>
+      <nav className="flex justify-between p-4 fixed backdrop-saturate-100 backdrop-blur w-full shadow-md">
+        <Link href="/">
+          <span className="font-extrabold">robbertvancaem</span>
+          <span className="font-light">.com</span>
+        </Link>
         <div className="space-x-6">
           <a href="#">About</a>
           <a href="#">Projects</a>
@@ -40,8 +41,8 @@ export default function Home() {
           <Image src="/me.jpeg" width={800} height={800} alt="Robbert van Caem" priority />
         </div>
         <div className="m-4">
-          <h1 className="text-4xl">Robbert van Caem</h1>
-          <h2 className="text-2xl">Frontend Developer</h2>
+          <h1 className="text-[3.375rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">Robbert van Caem</h1>
+          <h2 className="text-4xl font-bold">Full Stack Developer</h2>
         </div>
       </div>
       <div className="py-4 px-16 border border-slate-800">
