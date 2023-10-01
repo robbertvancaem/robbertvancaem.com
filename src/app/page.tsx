@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const GRADIENT_CLASS =
+const TEXT_GRADIENT_CLASS =
   "text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500";
 const LINK_CLASS = `border-b font-bold hover:text-pink-400 hover:border-pink-400`;
 
@@ -64,23 +64,29 @@ export default function Home() {
           />
         </div>
         <div className="m-4">
-          <h1 className={`text-[3.375rem] font-extrabold ${GRADIENT_CLASS}`}>
+          <h1
+            className={`text-[3.375rem] font-extrabold ${TEXT_GRADIENT_CLASS}`}
+          >
             Robbert van Caem
           </h1>
-          <h2 className={`text-3xl font-bold ${GRADIENT_CLASS}`}>
+          <h2 className={`text-3xl font-bold ${TEXT_GRADIENT_CLASS}`}>
             Creative Frontend Developer
           </h2>
           <h3 className="text-sm mt-8">
             Experienced in{" "}
-            <a href="https://react.dev" className={LINK_CLASS}>
+            <a href="https://react.dev" target="_blank" className={LINK_CLASS}>
               React
             </a>
             ,{" "}
-            <a href="https://nextjs.org/" className={LINK_CLASS}>
+            <a
+              href="https://nextjs.org/"
+              target="_blank"
+              className={LINK_CLASS}
+            >
               NextJS
             </a>
             ,{" "}
-            <a href="https://jestjs.io/" className={LINK_CLASS}>
+            <a href="https://jestjs.io/" target="_blank" className={LINK_CLASS}>
               Jest
             </a>
             , CI/CD and many more
@@ -89,7 +95,7 @@ export default function Home() {
       </Section>
       <Section className="flex px-10">
         <div className="w-1/2 flex justify-center">
-          <h2 className={`text-4xl font-bold ${GRADIENT_CLASS}`}>
+          <h2 className={`text-4xl font-bold ${TEXT_GRADIENT_CLASS}`}>
             Hi there 👋
           </h2>
         </div>
