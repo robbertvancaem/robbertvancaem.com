@@ -2,7 +2,9 @@ import "./globals.css";
 
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { GoMail, GoBriefcase } from "react-icons/go";
+import { GoBriefcase } from "react-icons/go";
+import { MdOutlineArticle } from "react-icons/md";
+import { GrContact } from "react-icons/gr";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,19 +36,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="w-full fixed p-4 ">
-          <div className="flex justify-between p-4 pr-6 w-full shadow-md bg-black/50 rounded-2xl">
+        <nav className="w-full fixed p-4 z-10">
+          <div className="flex justify-between p-4 pr-6 w-full shadow-md bg-black/50 rounded-2xl backdrop-blur">
             <Link href="/">
               <span className="font-extrabold">robbertvancaem</span>
               <span className="font-light">.com</span>
             </Link>
             <div className="space-x-12 flex">
-              <NavLink href="/about">About</NavLink>
               <NavLink href="/projects" icon={GoBriefcase}>
                 Projects
               </NavLink>
-              <NavLink href="/contact" icon={GoMail}>
-                Contact
+              <NavLink href="/blog" icon={MdOutlineArticle}>
+                Blog
+              </NavLink>
+              <NavLink href="/contact" icon={GrContact}>
+                Let&apos;s talk
               </NavLink>
             </div>
           </div>

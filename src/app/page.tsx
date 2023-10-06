@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Repositories from "./components/Repositories";
 
 const TEXT_GRADIENT_CLASS =
   "text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500";
@@ -35,6 +36,13 @@ const Section = ({
   children: React.ReactNode;
 }) => <section className={`aspect-video ${className}`}>{children}</section>;
 
+const WithDots = ({ children, className }) => (
+  <div className={`relative ${className}`}>
+    <div className="dotted" />
+    {children}
+  </div>
+);
+
 const Li = ({ children }: { children: React.ReactNode }) => (
   <li className="m-4 text-lg">{children}</li>
 );
@@ -50,10 +58,27 @@ const ListItem = ({ emoji, text }: { emoji: string; text: string }) => (
   </Li>
 );
 
-export default function Home() {
+async function getRepositories() {
+  const res = await fetch(
+    "https://api.github.com/users/robbertvancaem/repos?type=owner&sort=pushed",
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error("Could not fetch repositories");
+  }
+  return res.json();
+}
+
+export default async function Home() {
+  const repositories = await getRepositories();
   return (
     <main>
-      <Section className="flex items-center justify-center py-24">
+      <Section className="flex items-center justify-center">
         <div className="w-48 m-2 overflow-hidden rounded-full">
           <Image
             src="/me.jpeg"
@@ -93,19 +118,45 @@ export default function Home() {
           </h3>
         </div>
       </Section>
-      <Section className="flex px-10">
-        <div className="w-1/2 flex justify-center">
-          <h2 className={`text-4xl font-bold ${TEXT_GRADIENT_CLASS}`}>
-            Hi there 👋
-          </h2>
-        </div>
-        <div className="w-1/2 space-y-4">
-          <p>
-            I am a Creative Frontend Developer with more than 10 years of
-            experience. The past decade, I have been working for creatives
-            agencies as well as bigger, more corporate companies.
-          </p>
-        </div>
+      <Section>
+        <WithDots className="flex px-10 pb-[8rem]">
+          <div className="flex justify-center shrink-0 mr-10 pl-20">
+            <h2 className={`text-5xl font-bold ${TEXT_GRADIENT_CLASS}`}>
+              Hi there 👋
+            </h2>
+          </div>
+          <div className="space-y-6 pr-12">
+            <p className="text-lg">
+              I am a{" "}
+              <span className={TEXT_GRADIENT_CLASS}>Frontend Developer</span>{" "}
+              with more than 10 years of experience. The past decade, I have
+              been working for small creatives agencies as well as bigger
+              corporates.
+            </p>
+            <p>
+              I feel extremely comfortable in any JavaScript environment. Mostly
+              I have been working with React, but I also have some experience
+              with{" "}
+              <a
+                href="https://vuejs.org/"
+                className={LINK_CLASS}
+                target="_blank"
+              >
+                Vue.js
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://angularjs.org/"
+                className={LINK_CLASS}
+                target="_blank"
+              >
+                AngularJS
+              </a>{" "}
+              (yup it was still AngularJS back then)
+            </p>
+            <p></p>
+          </div>
+        </WithDots>
       </Section>
       <Section className="py-4 px-16 border border-slate-800">
         <h2 className="text-2xl font-bold">
@@ -113,8 +164,12 @@ export default function Home() {
         </h2>
         <ul>{listConfig.map(ListItem)}</ul>
       </Section>
+      <Section>
+        My latest contributions
+        <Repositories data={repositories} />
+      </Section>
       <Section className="py-4 flex justify-center items-center border border-slate-800">
-        Slide 2
+        What do others think of me? (LinkedIn Testimonials)
       </Section>
       <div className="py-4 flex justify-center items-center border border-slate-800">
         <a href="https://github.com/robbertvancaem" target="_blank">

@@ -13,3 +13,19 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }
+
+path {
+  stroke: currentColor;
+}
+
+.dotted {
+  opacity: 1;
+  background-image: radial-gradient(theme('colors.pink.500') 0.5px, transparent 0.5px);
+  background-size: 2rem 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 14rem;
+  mask-image: linear-gradient(rgb(0 0 0 / 0), rgba(0 0 0))
+}
