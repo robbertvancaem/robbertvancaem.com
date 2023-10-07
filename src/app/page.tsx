@@ -36,7 +36,13 @@ const Section = ({
   children: React.ReactNode;
 }) => <section className={`aspect-video ${className}`}>{children}</section>;
 
-const WithDots = ({ children, className }) => (
+const WithDots = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) => (
   <div className={`relative ${className}`}>
     <div className="dotted" />
     {children}
