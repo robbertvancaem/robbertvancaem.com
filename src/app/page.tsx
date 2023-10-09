@@ -164,17 +164,24 @@ export default async function Home() {
           </div>
         </WithDots>
       </Section>
-      <Section className="py-4 px-16 border border-slate-800">
+      <Section className="py-4 flex flex-col items-center">
         <h2 className="text-2xl font-bold">
-          What makes me a &quot;modern&quot; developer?
+          So, what makes me a &quot;modern&quot; developer? 🤔
         </h2>
         <ul>{listConfig.map(ListItem)}</ul>
       </Section>
-      <Section>
-        My latest contributions
-        <Repositories data={repositories} />
+      <Section className="py-12">
+        <div className="w-full text-center mb-8">
+          <h2 className="text-2xl font-bold">My latest contributions</h2>
+          <div className={`inline-block ${TEXT_GRADIENT_CLASS}`}>
+            in {repositories.length} repositories
+          </div>
+        </div>
+        <WithDots className="flex px-10 pb-[8rem]">
+          <Repositories data={repositories} />
+        </WithDots>
       </Section>
-      <Section className="py-4 flex justify-center items-center border border-slate-800">
+      <Section className="py-4 flex justify-center items-center">
         What do others think of me? (LinkedIn Testimonials)
       </Section>
       <div className="py-4 flex justify-center items-center border border-slate-800">
