@@ -34,14 +34,14 @@ const Section = ({
 }: {
   className?: string;
   children: React.ReactNode;
-}) => <section className={`aspect-video ${className}`}>{children}</section>;
+}) => <section className={`py-48 ${className}`}>{children}</section>;
 
 const WithDots = ({
   children,
   className,
 }: {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }) => (
   <div className={`relative ${className}`}>
     <div className="dotted" />
@@ -170,16 +170,20 @@ export default async function Home() {
         </h2>
         <ul>{listConfig.map(ListItem)}</ul>
       </Section>
-      <Section className="py-12">
+      <Section className="py-4">
         <div className="w-full text-center mb-8">
           <h2 className="text-2xl font-bold">My latest contributions</h2>
           <div className={`inline-block ${TEXT_GRADIENT_CLASS}`}>
             in {repositories.length} repositories
           </div>
         </div>
-        <WithDots className="flex px-10 pb-[8rem]">
+        <WithDots>
           <Repositories data={repositories} />
         </WithDots>
+      </Section>
+      <Section className="py-4 flex flex-col justify-center items-center">
+        <h2>Projects</h2>
+        <p>My latest projects</p>
       </Section>
       <Section className="py-4 flex justify-center items-center">
         What do others think of me? (LinkedIn Testimonials)

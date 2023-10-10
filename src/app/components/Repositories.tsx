@@ -18,6 +18,7 @@ type Repository = {
 };
 
 const SLIDER_SETTINGS = {
+  arrows: false,
   dots: true,
   infinite: false,
   speed: 500,
@@ -36,7 +37,7 @@ function Repositories({ data }: { data: Repository[] }) {
         {data.map((repo) => (
           <div
             key={repo.id.toString()}
-            className="border rounded border-white/60 p-4 pr-24"
+            className="border rounded border-white/60 p-4 pr-24 h-full"
           >
             <h3 className="text-xl">{repo.name}</h3>
             {langInitialised && (
